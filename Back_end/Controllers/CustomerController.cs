@@ -10,7 +10,7 @@ namespace Back_end.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CustomerController : ControllerBase
+    public class CustomersController : ControllerBase
     {
 
         [HttpGet]
