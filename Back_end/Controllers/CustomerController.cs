@@ -21,5 +21,14 @@ namespace Back_end.Controllers
                 return context.Customers.ToList();
             }
         }
+
+        [HttpGet("{id}")]
+        public IEnumerable<Customer> GetCustomerByID(int id)
+        {
+            using (var context = new CRMContext())
+            {
+                return context.Customers.Where(cus => cus.Id == id).ToList();
+            }
+        }
     }
 }
