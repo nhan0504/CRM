@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Back_end.Models;
+using Microsoft.Data.SqlClient;
 
 namespace Back_end.Controllers
 {
@@ -39,6 +40,16 @@ namespace Back_end.Controllers
             }
 
             return customer;
+        }
+
+        //GET: api/Customers/1/totaltrans
+        [HttpGet("{id}/totaltrans")]
+        public IQueryable GetTotalTrans(int id)
+        {
+            IQueryable<Transaction> num = _context.Transactions.AsQueryable().Count(,x => x.CustId == id);
+            //var num = _context.Transactions.FromSqlRaw($"SELECT COUNT(*) FROM Transactions WHERE CustID = {id}", id);
+           //int num =  _context.Database.FromSql($"SELECT COUNT(*) FROM Transactions WHERE CustID = {id}", id);
+            return num;
         }
 
         // PUT: api/Customers/5
