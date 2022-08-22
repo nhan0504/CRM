@@ -44,12 +44,22 @@ namespace Back_end.Controllers
 
         //GET: api/Customers/1/totaltrans
         [HttpGet("{id}/totaltrans")]
-        public IQueryable GetTotalTrans(int id)
+        public int GetTotalTrans(int id)
         {
-            IQueryable<Transaction> num = _context.Transactions.AsQueryable().Count(,x => x.CustId == id);
-            //var num = _context.Transactions.FromSqlRaw($"SELECT COUNT(*) FROM Transactions WHERE CustID = {id}", id);
-           //int num =  _context.Database.FromSql($"SELECT COUNT(*) FROM Transactions WHERE CustID = {id}", id);
+            var num =  _context.Transactions.Where(x => x.CustId == id).Count();
             return num;
+
+            //var num = from CustId in _context.Transactions
+            //          where _context.Transactions.CustId == id
+            //          select CustId;
+            
+            //var num = _context.Transactions.Where
+            //_context.Transactions.Count(_context.Transactions.Where(x => x.CustId == id).ToArray());
+            //return await .ToList();
+            //IQueryable<Transaction> num = _context.Transactions.AsQueryable().Count(,x => x.CustId == id);
+            //var num = _context.Transactions.FromSqlRaw($"SELECT COUNT(*) FROM Transactions WHERE CustID = {id}", id);
+            //int num =  _context.Database.FromSql($"SELECT COUNT(*) FROM Transactions WHERE CustID = {id}", id);
+            //return num;
         }
 
         // PUT: api/Customers/5
