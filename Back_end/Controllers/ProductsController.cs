@@ -41,6 +41,14 @@ namespace Back_end.Controllers
             return product;
         }
 
+        // GET: api/Products/5/inTransactions
+        [HttpGet("{id}/inTransactions")]
+        public async Task<ActionResult<IEnumerable<TransactionDetail>>> GetAllTransactions(int id)
+        {
+            var allTransaction = await _context.TransactionDetails.Where(x => x.ProId == id).ToListAsync();
+            return allTransaction;
+        }
+
         // PUT: api/Products/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
