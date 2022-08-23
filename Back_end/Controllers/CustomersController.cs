@@ -44,9 +44,9 @@ namespace Back_end.Controllers
 
         //GET: api/Customers/1/totaltrans
         [HttpGet("{id}/totaltrans")]
-        public int GetTotalTrans(int id)
+        public async Task<ActionResult<int>> GetTotalTrans(int id)
         {
-            var num =  _context.Transactions.Where(x => x.CustId == id).Count();
+            var num =  await _context.Transactions.Where(x => x.CustId == id).CountAsync();
             return num;
         }
 
