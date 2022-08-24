@@ -57,6 +57,14 @@ namespace Back_end.Controllers
             return totalcost;
         }
 
+        // GET: api/Transactions/revenue
+        [HttpGet("revenue")]
+        public async Task<ActionResult<decimal>> GetRevenue(int id)
+        {
+            var revenue = await _context.TransactionDetails.Select(x => x.TotalCost).SumAsync();
+            return revenue;
+        }
+
         // PUT: api/Transactions/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
