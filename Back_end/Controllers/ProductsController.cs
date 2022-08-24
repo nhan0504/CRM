@@ -49,6 +49,14 @@ namespace Back_end.Controllers
             return allTransaction;
         }
 
+        // GET: api/Products/5/numTransactions
+        [HttpGet("{id}/numTransactions")]
+        public async Task<ActionResult<int>> GetNumTransactions(int id)
+        {
+            var numTransaction = await _context.TransactionDetails.Where(x => x.ProId == id).CountAsync();
+            return numTransaction;
+        }
+
         // GET: api/Products/5/totalquantity
         [HttpGet("{id}/totalquantity")]
         public async Task<ActionResult<decimal>> GetTotalQuantitySold(int id)
