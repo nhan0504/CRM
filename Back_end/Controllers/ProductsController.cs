@@ -57,12 +57,20 @@ namespace Back_end.Controllers
             return numTransaction;
         }
 
-        // GET: api/Products/5/totalquantity
-        [HttpGet("{id}/totalquantity")]
-        public async Task<ActionResult<decimal>> GetTotalQuantitySold(int id)
+        // GET: api/Products/5/numSold
+        [HttpGet("{id}/numSold")]
+        public async Task<ActionResult<decimal>> GetNumProductSold(int id)
         {
-            var totalQuantity = await _context.TransactionDetails.Where(x => x.ProId == id).Select(x => x.Quantity).SumAsync();
-            return totalQuantity;
+            var numProductSold = await _context.TransactionDetails.Where(x => x.ProId == id).Select(x => x.Quantity).SumAsync();
+            return numProductSold;
+        }
+
+        // GET: api/Products/sold
+        [HttpGet("sold")]
+        public async Task<ActionResult<int>> GetNumTypeSold()
+        {
+            var numSold = await _context.TransactionDetails.Select(x => x.ProId).Distinct().CountAsync();
+            return numSold;
         }
 
         // GET: api/Products/5/revenue
