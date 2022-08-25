@@ -83,7 +83,7 @@ namespace Back_end.Controllers
 
         // GET: api/Products/mostSold
         [HttpGet("mostSold")]
-        public decimal GetMostSoldProducts()
+        public dynamic GetMostSoldProducts()
         {
 
             var totalByEachProd =  from transactions in _context.TransactionDetails
@@ -92,12 +92,22 @@ namespace Back_end.Controllers
 
             decimal max = totalByEachProd.Max();
 
-            //var numSoldOFProducts = from transactions in _context.TransactionDetails
-            //                        join prod in _context.Products on transactions.ProId equals prod.Id
-            //                        group transactions by { transactions.ProId, prod.} into g
-            //                        select prod;
+            var soldOFProducts = from transactions in _context.TransactionDetails
+                                 group transactions by transactions.ProId into g
+                                 select new { 
+                                     quantity = g.Sum(x => x.Quantity),
+                                     proID = g.Key
+                                 };
 
-            return max;
+            //var numSoldOFProducts = from transactions in _context.TransactionDetails
+            //                        join pr in _context.Products on transactions.ProId equals pr.Id
+            //                        group transactions by new { transactions.ProId, pr.Name, pr.Price, pr.Description } into g
+            //                        select new {
+            //                            g.Sum(x => x.Quantity), 
+            //                            pr.Name, p.
+            //                        };
+
+            return soldOFProducts;
         }
 
         // PUT: api/Products/5
