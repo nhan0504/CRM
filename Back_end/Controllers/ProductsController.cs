@@ -102,6 +102,7 @@ namespace Back_end.Controllers
             var numSoldOFProducts = from transactions in _context.TransactionDetails
                                     join pr in _context.Products on transactions.ProId equals pr.Id
                                     group transactions by new { transactions.ProId, pr.Name, pr.Price, pr.Description } into g
+                                    where(g.Sum(x => x.Quantity) == max)
                                     select new
                                     {
                                         quantity = g.Sum(x => x.Quantity),
