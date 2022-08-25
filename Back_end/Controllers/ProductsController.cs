@@ -81,6 +81,25 @@ namespace Back_end.Controllers
             return revenue;
         }
 
+        // GET: api/Products/mostSold
+        [HttpGet("mostSold")]
+        public decimal GetMostSoldProducts()
+        {
+
+            var totalByEachProd =  from transactions in _context.TransactionDetails
+                                   group transactions by transactions.ProId into g
+                                   select g.Sum(x => x.Quantity);
+
+            decimal max = totalByEachProd.Max();
+
+            //var numSoldOFProducts = from transactions in _context.TransactionDetails
+            //                        join prod in _context.Products on transactions.ProId equals prod.Id
+            //                        group transactions by { transactions.ProId, prod.} into g
+            //                        select prod;
+
+            return max;
+        }
+
         // PUT: api/Products/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
