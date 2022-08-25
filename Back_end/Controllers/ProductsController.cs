@@ -99,15 +99,16 @@ namespace Back_end.Controllers
                                      proID = g.Key
                                  };
 
-            //var numSoldOFProducts = from transactions in _context.TransactionDetails
-            //                        join pr in _context.Products on transactions.ProId equals pr.Id
-            //                        group transactions by new { transactions.ProId, pr.Name, pr.Price, pr.Description } into g
-            //                        select new {
-            //                            g.Sum(x => x.Quantity), 
-            //                            pr.Name, p.
-            //                        };
+            var numSoldOFProducts = from transactions in _context.TransactionDetails
+                                    join pr in _context.Products on transactions.ProId equals pr.Id
+                                    group transactions by new { transactions.ProId, pr.Name, pr.Price, pr.Description } into g
+                                    select new
+                                    {
+                                        quantity = g.Sum(x => x.Quantity),
+                                        g.Key
+                                    };
 
-            return soldOFProducts;
+            return numSoldOFProducts;
         }
 
         // PUT: api/Products/5
