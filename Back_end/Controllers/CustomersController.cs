@@ -21,6 +21,7 @@ namespace Back_end.Controllers
             _context = context;
         }
 
+        //Get all customer
         // GET: api/Customers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Customer>>> GetCustomers()
@@ -28,6 +29,7 @@ namespace Back_end.Controllers
             return await _context.Customers.ToListAsync();
         }
 
+        //Get a customer by ID
         // GET: api/Customers/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Customer>> GetCustomer(int id)
@@ -42,6 +44,7 @@ namespace Back_end.Controllers
             return customer;
         }
 
+        //Get a customer total number of transaction
         //GET: api/Customers/1/totaltrans
         [HttpGet("{id}/totaltrans")]
         public async Task<ActionResult<int>> GetTotalTrans(int id)
@@ -50,6 +53,7 @@ namespace Back_end.Controllers
             return num;
         }
 
+        //Get all transaction detail by a customer
         //GET: api/Customers/1/transactions
         [HttpGet("{id}/transactions")]
         public async Task<ActionResult<IEnumerable<Transaction>>> GetTransactions(int id)
@@ -58,6 +62,7 @@ namespace Back_end.Controllers
             return transactions;
         }
 
+        // Update customer details into database
         // PUT: api/Customers/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
@@ -90,6 +95,7 @@ namespace Back_end.Controllers
             return NoContent();
         }
 
+        // Enter a new customer into the database
         // POST: api/Customers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
@@ -116,6 +122,7 @@ namespace Back_end.Controllers
             return CreatedAtAction("GetCustomer", new { id = customer.Id }, customer);
         }
 
+        //Remove a customer by ID from the database
         // DELETE: api/Customers/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Customer>> DeleteCustomer(int id)
