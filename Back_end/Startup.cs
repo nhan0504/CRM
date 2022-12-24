@@ -1,5 +1,6 @@
 using Back_end.Models;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
@@ -30,7 +31,13 @@ namespace Back_end
             services.AddControllers();
             services.AddDbContext<CRMContext>(opt =>
                opt.UseSqlServer("Name=CRMConnection"));
+            //Configure to run on IIS Server
+            services.Configure<IISServerOptions>(options =>
+            {
+                options.AllowSynchronousIO = true;
+            });
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -39,6 +46,10 @@ namespace Back_end
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(builder => builder.WithOrigins("https://localhost:44379")
+                                .AllowAnyMethod()
+                                .AllowAnyHeader());
 
             app.UseHttpsRedirection();
 
