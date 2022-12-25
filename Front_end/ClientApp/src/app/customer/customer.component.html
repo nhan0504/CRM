@@ -14,11 +14,15 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let forecast of forecasts">
-      <td>{{ forecast.date }}</td>
-      <td>{{ forecast.temperatureC }}</td>
-      <td>{{ forecast.temperatureF }}</td>
-      <td>{{ forecast.summary }}</td>
-    </tr>
+      <tr *ngFor="let customer of customers">
+          <td>{{ customer.LName }}</td>
+          <!--<td>{{ forecast.date }}</td>
+          <td>{{ forecast.temperatureC }}</td>
+          <td>{{ forecast.temperatureF }}</td>
+          <td>{{ forecast.summary }}</td>-->
+      </tr>
   </tbody>
 </table>
+
+<p>{{num}}</p>
+<!--<p *ngFor="let customer of customers">{{ customer.LName }}</p>-->
