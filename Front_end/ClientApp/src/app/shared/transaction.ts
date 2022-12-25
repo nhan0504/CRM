@@ -1,4 +1,4 @@
-﻿export class Transaction {
+﻿export interface Transaction {
     ID: number;
     CustID: number;
     CreatedDate: Date;
