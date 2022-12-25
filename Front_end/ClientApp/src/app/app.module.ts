@@ -7,8 +7,8 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { ProductComponent } from './product/product.component';
+import { CustomerComponent } from './Customer/customer.component';
 
 import { CustomerService } from './services/customer.service';
 import { baseURL } from './shared/baseurl';
@@ -18,8 +18,8 @@ import { baseURL } from './shared/baseurl';
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent
+    ProductComponent,
+    CustomerComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -27,8 +27,8 @@ import { baseURL } from './shared/baseurl';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'product', component: ProductComponent },
+      { path: 'customer', component: CustomerComponent },
     ])
   ],
     providers: [
