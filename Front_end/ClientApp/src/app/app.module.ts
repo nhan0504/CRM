@@ -9,6 +9,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { ProductComponent } from './product/product.component';
 import { CustomerComponent } from './Customer/customer.component';
+import { CustomerdetailComponent } from './customerdetail/customerdetail.component';
 
 import { CustomerService } from './services/customer.service';
 import { baseURL } from './shared/baseurl';
@@ -21,7 +22,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     NavMenuComponent,
     HomeComponent,
     ProductComponent,
-    CustomerComponent
+    CustomerComponent,
+    CustomerdetailComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -31,6 +33,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'product', component: ProductComponent },
       { path: 'customer', component: CustomerComponent },
+      { path: 'customerdetail', component: CustomerdetailComponent },
     ]),
       FlexLayoutModule,
       MatGridListModule
