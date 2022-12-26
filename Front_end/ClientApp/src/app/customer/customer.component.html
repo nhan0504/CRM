@@ -27,7 +27,7 @@
     <div *ngIf="customers">
         <mat-grid-list cols="2" rowHeight="200px">
             <mat-grid-tile *ngFor="let customer of customers">
-                <h1 [routerLink]="['/product']">{{customer.fname}}{{" " + customer.lname}}</h1>
+                <h1 [routerLink]="['/customerdetail']">{{customer.fname}}{{" " + customer.lname}}</h1>
                 
             </mat-grid-tile>
         </mat-grid-list>
