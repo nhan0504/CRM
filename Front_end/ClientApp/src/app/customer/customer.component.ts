@@ -20,15 +20,14 @@ export class CustomerComponent {
 
     num: string;
 
-    //constructor(http: HttpClient) {
-    //    http.get<string>('https://localhost:44310/api/customers/0/totaltrans').subscribe(result => {
-    //        this.num = result;
-    //}
+    constructor(private customerService: CustomerService,
+        @Inject('baseURL') public baseURL: string) {
+    }
 
-    //ngOnInit(): void {
-    //    this.customerService.getCustomers()
-    //        .subscribe(customers => this.customers = customers);
-    //}
+    ngOnInit(): void {
+        this.customerService.getCustomers()
+            .subscribe(data => this.customers = data);
+    }
 }
 
 interface WeatherForecast {
