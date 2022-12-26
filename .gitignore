@@ -301,4 +301,5 @@ e2e/*.map
 # System Files
 .DS_Store/
 
-
+*.js
+*.js.map
