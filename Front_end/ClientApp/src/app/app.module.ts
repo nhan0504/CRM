@@ -12,6 +12,8 @@ import { CustomerComponent } from './Customer/customer.component';
 
 import { CustomerService } from './services/customer.service';
 import { baseURL } from './shared/baseurl';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { baseURL } from './shared/baseurl';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'product', component: ProductComponent },
       { path: 'customer', component: CustomerComponent },
-    ])
+    ]),
+      FlexLayoutModule,
+      MatGridListModule
   ],
     providers: [
         CustomerService,
