@@ -14,7 +14,7 @@ export class CustomerService {
 
     //Get all customers
     getCustomers(): Observable<Customer[]> {
-        return this.http.get<Customer[]>(baseURL + 'Customers');
+        return this.http.get<Customer[]>(baseURL + 'customers');
     }
 
     //Get a customer by ID
@@ -32,23 +32,28 @@ export class CustomerService {
         return this.http.get<Customer>(baseURL + 'Customers/' + id + '/transaction');
     }
 
-    //getFeaturedDish(): Observable<Customer> {
-    //    return this.http.get<Customer[]>(baseURL + 'customers?featured=true')
-    //        .pipe(map(customers => customers[0]));
-    //}
+    //Edit a customer information
+    putCustomer(customer: Customer): Observable<Customer> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'content-Type': 'application/json'
+            })
+        }
+        return this.http.put<Customer>(baseURL + 'customers/' + customer.ID, customer, httpOptions);
+    }
 
-    //getDishIds(): Observable<string[] | any> {
-    //    return this.getCustomers().pipe(map(dishes => dishes.map(customer => customer.ID)))
-    //        .pipe(catchError(error => error));
-    //}
+    //Add a customer
+    postCustomer(customer: Customer): Observable<Customer> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'content-Type': 'application/json'
+            })
+        }
+        return this.http.post<Customer>(baseURL + 'customers/', customer, httpOptions);
+    }
 
-    //putCustomer(customer: Customer): Observable<Customer> {
-    //    const httpOptions = {
-    //        headers: new HttpHeaders({
-    //            'content-Type': 'application/json'
-    //        })
-    //    }
-    //    return this.http.put<Customer>(baseURL + 'customers/' + customer.ID, customer, httpOptions);
-    //}
-
+    //Delete a customer
+    deleteCustomer(id: string): Observable<Customer> {
+        return this.http.delete<Customer>(baseURL + 'customers/' + id);
+    }
 }
