@@ -33,7 +33,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'product', component: ProductComponent },
       { path: 'customer', component: CustomerComponent },
-      { path: 'customerdetail', component: CustomerdetailComponent },
+      { path: 'customerdetail/:id', component: CustomerdetailComponent },
     ]),
       FlexLayoutModule,
       MatGridListModule
