@@ -1,9 +1,9 @@
 ﻿export interface Customer {
-    ID: number;
+    ID: string;
     FName: string;
-    MInit: string;
+    MInit: string | null;
     LName: string;
-    Email: boolean;
-    Phone: number;
+    Email: string | null;
+    Phone: number | null;
     BirthDate: Date;
 }
