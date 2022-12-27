@@ -1,6 +1,17 @@
 ﻿<h1>Customer Detail</h1>
-<p>Name: {{customer.fname + " "}}{{customer.minit}}{{" " + customer.lname}}</p>
-<p>Email: {{customer.email}}</p>
-<p>Phone: {{customer.phone}}</p>
-<p>Birth date: {{customer.birthDate}}</p>
-<p>Total number of transaction: {{totaltrans}}</p>
+<div>
+    <p>Name: {{customer.fname + " "}}{{customer.minit}}{{" " + customer.lname}}</p>
+    <p>Email: {{customer.email}}</p>
+    <p>Phone: {{customer.phone}}</p>
+    <p>Birth date: {{customer.birthDate}}</p>
+    <p>Total number of transaction: {{totaltrans}}</p>
+</div>
+
+<div *ngIf="transactions">
+    <mat-grid-list cols="2" rowHeight="200px">
+        <mat-grid-tile *ngFor="let transaction of transactions">
+            <h1>Transaction number: {{transaction.id}}</h1>
+            <p>Created date: {{transaction.createdDate}}</p>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

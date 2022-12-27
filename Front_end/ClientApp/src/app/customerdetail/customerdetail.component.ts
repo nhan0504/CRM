@@ -2,6 +2,7 @@
 import { Params, ActivatedRoute } from '@angular/router';
 import { Customer } from '../shared/customer';
 import { CustomerService } from '../services/customer.service';
+import { Transaction } from '../shared/transaction';
 
 @Component({
     selector: 'app-customerdetail-component',
@@ -12,6 +13,7 @@ export class CustomerdetailComponent implements OnInit {
     id: string;
     customer: Customer;
     totaltrans: number;
+    transactions: Transaction[];
 
     constructor(private route: ActivatedRoute,
         private customerService: CustomerService,
@@ -23,6 +25,8 @@ export class CustomerdetailComponent implements OnInit {
             .subscribe(customer => this.customer = customer);
         this.customerService.getCustomerTotaltrans(this.id)
             .subscribe(data => this.totaltrans = data);
+        this.customerService.getCustomerTransaction(this.id)
+            .subscribe(data => this.transactions = data);
     }
 
 }
