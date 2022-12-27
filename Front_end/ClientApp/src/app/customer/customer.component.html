@@ -1,34 +1,11 @@
 <h1 id="tableLabel">Customers</h1>
 
-<p *ngIf="!forecasts"><em>Loading...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="forecasts">
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Temp. (C)</th>
-      <th>Temp. (F)</th>
-      <th>Summary</th>
-    </tr>
-  </thead>
-  <tbody>
-      <tr *ngFor="let customer of customers">
-          <td>{{ customer.LName }}</td>
-          <!--<td>{{ forecast.date }}</td>
-          <td>{{ forecast.temperatureC }}</td>
-          <td>{{ forecast.temperatureF }}</td>
-          <td>{{ forecast.summary }}</td>-->
-      </tr>
-  </tbody>
-</table>
-
-
-
-    <div *ngIf="customers">
-        <mat-grid-list cols="2" rowHeight="200px">
-            <mat-grid-tile *ngFor="let customer of customers">
-                <h1 [routerLink]="['/customerdetail', customer.id]">{{customer.fname}}{{" " + customer.lname}}</h1>
+<div *ngIf="customers">
+    <mat-grid-list cols="2" rowHeight="200px">
+        <mat-grid-tile *ngFor="let customer of customers">
+            <h1 [routerLink]="['/customerdetail', customer.id]">{{customer.fname}}{{" " + customer.lname}}</h1>
                 
-            </mat-grid-tile>
-        </mat-grid-list>
-    </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
