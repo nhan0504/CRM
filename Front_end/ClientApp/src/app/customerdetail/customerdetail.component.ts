@@ -8,8 +8,6 @@ import { CustomerService } from '../services/customer.service';
     templateUrl: './customerdetail.component.html'
 })
 export class CustomerdetailComponent implements OnInit {
-    //customer!: Customer | null;
-    //customerIds!: number[];
 
     id: string;
     customer: Customer;
