@@ -9,14 +9,8 @@ import { Customer } from '../shared/customer';
   templateUrl: './customer.component.html'
 })
 export class CustomerComponent {
-    public forecasts: WeatherForecast[];
+   
     customers: Customer[];
-
-  //constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-  //  http.get<WeatherForecast[]>(baseUrl + 'weatherforecast').subscribe(result => {
-  //    this.forecasts = result;
-  //  }, error => console.error(error));
-  //  }
 
     constructor(private customerService: CustomerService,
         @Inject('baseURL') public baseURL: string) {
@@ -28,9 +22,3 @@ export class CustomerComponent {
     }
 }
 
-interface WeatherForecast {
-  date: string;
-  temperatureC: number;
-  temperatureF: number;
-  summary: string;
-}
