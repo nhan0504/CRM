@@ -18,8 +18,6 @@ export class CustomerComponent {
   //  }, error => console.error(error));
   //  }
 
-    num: string;
-
     constructor(private customerService: CustomerService,
         @Inject('baseURL') public baseURL: string) {
     }
