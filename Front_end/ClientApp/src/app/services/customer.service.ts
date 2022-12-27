@@ -4,6 +4,7 @@ import { baseURL } from '../shared/baseurl';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Transaction } from '../shared/transaction';
 
 @Injectable({
     providedIn: 'root'
@@ -23,13 +24,13 @@ export class CustomerService {
     }
 
     //Get a customer's total number of transactions
-    getCustomerTotaltrans(id: string): Observable<Customer> {
-        return this.http.get<Customer>(baseURL + 'Customers/' + id + '/totaltrans');
+    getCustomerTotaltrans(id: string): Observable<number> {
+        return this.http.get<number>(baseURL + 'Customers/' + id + '/totaltrans');
     }
 
     //Get a customer's all transactions details
-    getCustomerTransaction(id: string): Observable<Customer> {
-        return this.http.get<Customer>(baseURL + 'Customers/' + id + '/transaction');
+    getCustomerTransaction(id: string): Observable<Transaction[]> {
+        return this.http.get<Transaction[]>(baseURL + 'Customers/' + id + '/transaction');
     }
 
     //Edit a customer information
