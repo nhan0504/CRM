@@ -11,6 +11,7 @@ export class CustomerdetailComponent implements OnInit {
 
     id: string;
     customer: Customer;
+    totaltrans: number;
 
     constructor(private route: ActivatedRoute,
         private customerService: CustomerService,
@@ -20,6 +21,8 @@ export class CustomerdetailComponent implements OnInit {
         this.route.params.subscribe(params =>  this.id = params.id);
         this.customerService.getCustomer(this.id)
             .subscribe(customer => this.customer = customer);
+        this.customerService.getCustomerTotaltrans(this.id)
+            .subscribe(data => this.totaltrans = data);
     }
 
 }
