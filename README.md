@@ -4,6 +4,13 @@ This project is a backend service for a Customer Relationship Management (CRM) s
 
 Currently, there is no frontend for this project. However, a user interface is under consideration for future development.
 
+# API Access
+You can access the live API base URL at: [http://crmapi.nhanproj.com](http://crmapi.nhanproj.com)
+
+Or you can test out the API directly in Postman
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/21134493-45c2f268-d323-4161-92c5-93fe349dae50?action=collection%2Ffork&collection-url=entityId%3D21134493-45c2f268-d323-4161-92c5-93fe349dae50%26entityType%3Dcollection%26workspaceId%3Ddd3391fe-dcaf-46b2-92e4-92279ed2cc5b)
+
 # Feature
 ## Customer API
 `GET /api/customers`: Retrieves a list of all customers.    
