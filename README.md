@@ -5,7 +5,8 @@ This project is a backend service for a Customer Relationship Management (CRM) s
 Currently, there is no frontend for this project. However, a user interface is under consideration for future development.
 
 # API Access
-You can access the live API base URL at: [http://crmapi.nhanproj.com](http://crmapi.nhanproj.com)
+
+You can access the live API base URL at: <a href="http://crmapi.nhanproj.com" target="_blank">http://crmapi.nhanproj.com</a>
 
 Or you can test out the API directly in Postman
 
