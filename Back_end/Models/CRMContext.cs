@@ -37,7 +37,7 @@ namespace Back_end.Models
             modelBuilder.Entity<Customer>(entity =>
             {
                 entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
+                    .ValueGeneratedOnAdd()
                     .HasColumnName("ID");
 
                 entity.Property(e => e.BirthDate).HasColumnType("date");
@@ -67,7 +67,7 @@ namespace Back_end.Models
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
+                    .ValueGeneratedOnAdd()
                     .HasColumnName("ID");
 
                 entity.Property(e => e.Description).HasColumnType("text");
@@ -83,7 +83,7 @@ namespace Back_end.Models
             modelBuilder.Entity<Transaction>(entity =>
             {
                 entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
+                    .ValueGeneratedOnAdd()
                     .HasColumnName("ID");
 
                 entity.Property(e => e.CreatedDate).HasColumnType("date");
