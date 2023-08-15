@@ -1,6 +1,6 @@
 # CRM
 # Introduction
-This project is a backend service for a Customer Relationship Management (CRM) system. It handles various functionalities to manage and analyze customer interactions and data throughout the customer lifecycle. The service allows for a variety of interactions with the CRM data via a set of 31 APIs.    
+This project is a backend service for a Customer Relationship Management (CRM) system. It handles various functionalities to manage and analyze customer interactions and data throughout the customer lifecycle. The service allows for a variety of interactions with the CRM data via a set of 31 APIs. The API is public and there is a rate limit of 10 requests per minute.
 
 Currently, there is no frontend for this project. However, a user interface is under consideration for future development.
 
