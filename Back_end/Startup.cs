@@ -1,18 +1,11 @@
+using AspNetCoreRateLimit;
 using Back_end.Models;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Back_end
 {
@@ -36,6 +29,10 @@ namespace Back_end
             {
                 options.AllowSynchronousIO = true;
             });
+            services.AddMemoryCache();
+            services.Configure<IpRateLimitOptions>(Configuration.GetSection("IpRateLimiting"));        
+            services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+            services.AddInMemoryRateLimiting();
         }
 
 
@@ -51,9 +48,11 @@ namespace Back_end
                                 .AllowAnyMethod()
                                 .AllowAnyHeader());
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseIpRateLimiting();
 
             app.UseAuthorization();
 
@@ -61,6 +60,7 @@ namespace Back_end
             {
                 endpoints.MapControllers();
             });
+            
         }
     }
 }
